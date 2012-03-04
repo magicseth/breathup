@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-
+#import <AudioToolbox/AudioToolbox.h>
 @implementation ViewController
+@synthesize motionManager;
 
 - (void)didReceiveMemoryWarning
 {
@@ -20,7 +21,114 @@
 
 - (void)viewDidLoad
 {
+    SystemSoundID soundID = 0;
+        NSString *filename = @"receiveold.caf";
+		CFURLRef soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
+													(CFStringRef) filename,
+													CFSTR(""),
+													NULL);
+
+    AudioServicesCreateSystemSoundID (soundURL, &soundID);
+
+    SystemSoundID sounda = soundID;
+    filename = @"sendold.caf";
+    soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
+                                                (CFStringRef) filename,
+                                                CFSTR(""),
+                                                NULL);
+    
+    AudioServicesCreateSystemSoundID (soundURL, &soundID);
+
+    SystemSoundID soundb = soundID;
     [super viewDidLoad];
+    
+    
+    self.motionManager = [[CMMotionManager alloc] init];
+    static float position = 0.0;
+    static float speed = 0.0;
+    static float last = 0;
+    static float lastavg = 0;
+    static float lastdir = 1;
+    static double time = 0.0;
+    static double olddir;
+#define NUMVALS 5
+    static float vals[NUMVALS];
+    
+    time = [[NSDate date] timeIntervalSince1970];
+    //Gyroscope
+    if([self.motionManager isGyroAvailable])
+    {
+        static int i = 0;
+        /* Start the gyroscope if it is not active already */ 
+        if([self.motionManager isGyroActive] == NO)
+        {
+            /* Update us 2 times a second */
+            [self.motionManager setGyroUpdateInterval:1.0f / 2.0f];
+            
+            /* And on a handler block object */
+            
+            /* Receive the gyroscope data on this block */
+            [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
+                
+                double now = [[NSDate date] timeIntervalSince1970];
+                double timedelta = now - time;
+                time = now;
+
+                
+                CMAcceleration acc = [motion gravity];
+                if (abs(acc.z) > 0.07) {
+                    speed += acc.z;
+                    position += speed * timedelta;
+                }
+                vals[i%NUMVALS] = acc.y - last;
+                last = acc.y;
+                
+                double avg = 0;
+                for (int j = 0; j < NUMVALS; j++) {
+                    avg += vals[j];
+                }
+                avg /= NUMVALS;
+                if (avg > -0.0001 && avg <0) {
+                    avg = 0;
+                }
+                float newdir = 0;
+                if (avg <0 && lastavg < 0) {
+                    newdir = -1;
+                }
+                if ( avg > 0 && lastavg > 0) {
+                    newdir = 1;
+                }
+                lastavg = avg;
+                if (newdir == 1) {
+                    [self.view setBackgroundColor:[UIColor redColor]];
+                    if (olddir == -1) {
+                        AudioServicesPlaySystemSound(sounda);
+                    }
+                } else if(newdir == -1){
+                    [self.view setBackgroundColor:[UIColor greenColor]];
+                    if (olddir == 1) {
+                        AudioServicesPlaySystemSound(soundb);
+                    }
+                    
+                }
+                if (newdir) {
+                    olddir = newdir;
+                }
+                
+                speed *= .99;
+                if (i%5 == 0) {
+                    NSLog(@"%.02f, %.04f, %.04f, ", acc.y, avg, newdir);
+                }
+                i++;
+            }];
+             
+        }
+    }
+    else
+    {
+        NSLog(@"Gyroscope not Available!");
+    }
+
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

@@ -16,6 +16,11 @@
 		648974591502EC3E00535080 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648974581502EC3E00535080 /* ViewController.m */; };
 		6489745C1502EC3E00535080 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6489745A1502EC3E00535080 /* ViewController_iPhone.xib */; };
 		6489745F1502EC3E00535080 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6489745D1502EC3E00535080 /* ViewController_iPad.xib */; };
+		648974661502ED3500535080 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974651502ED3500535080 /* CoreMotion.framework */; };
+		648974681502F66D00535080 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974671502F66D00535080 /* Security.framework */; };
+		6489746A1502FD8E00535080 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974691502FD8E00535080 /* AudioToolbox.framework */; };
+		6489746D1502FDC300535080 /* receiveold.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6489746B1502FDC300535080 /* receiveold.caf */; };
+		6489746E1502FDC300535080 /* sendold.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6489746C1502FDC300535080 /* sendold.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +28,21 @@
 		648974451502EC3E00535080 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		648974471502EC3E00535080 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		648974491502EC3E00535080 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		6489744D1502EC3E00535080 /* breathup-Info.plist */ = {isa = PBXFileReference; path = "breathup-Info.plist"; sourceTree = "<group>"; };
+		6489744D1502EC3E00535080 /* breathup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "breathup-Info.plist"; sourceTree = "<group>"; };
 		6489744F1502EC3E00535080 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		648974511502EC3E00535080 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		648974531502EC3E00535080 /* breathup-Prefix.pch */ = {isa = PBXFileReference; path = "breathup-Prefix.pch"; sourceTree = "<group>"; };
-		648974541502EC3E00535080 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		648974531502EC3E00535080 /* breathup-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "breathup-Prefix.pch"; sourceTree = "<group>"; };
+		648974541502EC3E00535080 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		648974551502EC3E00535080 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		648974571502EC3E00535080 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		648974571502EC3E00535080 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		648974581502EC3E00535080 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6489745B1502EC3E00535080 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		6489745E1502EC3E00535080 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		648974651502ED3500535080 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		648974671502F66D00535080 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		648974691502FD8E00535080 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6489746B1502FDC300535080 /* receiveold.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = receiveold.caf; sourceTree = "<group>"; };
+		6489746C1502FDC300535080 /* sendold.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sendold.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,9 +50,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				648974661502ED3500535080 /* CoreMotion.framework in Frameworks */,
 				648974461502EC3E00535080 /* UIKit.framework in Frameworks */,
 				648974481502EC3E00535080 /* Foundation.framework in Frameworks */,
 				6489744A1502EC3E00535080 /* CoreGraphics.framework in Frameworks */,
+				648974681502F66D00535080 /* Security.framework in Frameworks */,
+				6489746A1502FD8E00535080 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +65,11 @@
 		648974361502EC3E00535080 = {
 			isa = PBXGroup;
 			children = (
+				6489746B1502FDC300535080 /* receiveold.caf */,
+				6489746C1502FDC300535080 /* sendold.caf */,
+				648974691502FD8E00535080 /* AudioToolbox.framework */,
+				648974671502F66D00535080 /* Security.framework */,
+				648974651502ED3500535080 /* CoreMotion.framework */,
 				6489744B1502EC3E00535080 /* breathup */,
 				648974441502EC3E00535080 /* Frameworks */,
 				648974421502EC3E00535080 /* Products */,
@@ -155,6 +173,8 @@
 				648974501502EC3E00535080 /* InfoPlist.strings in Resources */,
 				6489745C1502EC3E00535080 /* ViewController_iPhone.xib in Resources */,
 				6489745F1502EC3E00535080 /* ViewController_iPad.xib in Resources */,
+				6489746D1502FDC300535080 /* receiveold.caf in Resources */,
+				6489746E1502FDC300535080 /* sendold.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,10 +269,13 @@
 		648974631502EC3E00535080 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Seth Raphael (V7EAG5X4FW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "breathup/breathup-Prefix.pch";
 				INFOPLIST_FILE = "breathup/breathup-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E56D1E3F-7523-469B-9F53-E5047EB6380F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -263,6 +286,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "breathup/breathup-Prefix.pch";
 				INFOPLIST_FILE = "breathup/breathup-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
