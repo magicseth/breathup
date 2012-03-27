@@ -275,7 +275,7 @@
 				INFOPLIST_FILE = "breathup/breathup-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E56D1E3F-7523-469B-9F53-E5047EB6380F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6C85D297-23A4-4B40-9864-4FA3788BD521";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -311,6 +311,7 @@
 				648974641502EC3E00535080 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
