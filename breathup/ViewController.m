@@ -44,17 +44,12 @@
     
     
     self.motionManager = [[CMMotionManager alloc] init];
-    static float position = 0.0;
-    static float speed = 0.0;
     static float last = 0;
     static float lastavg = 0;
-    static float lastdir = 1;
-    static double time = 0.0;
     static double olddir;
 #define NUMVALS 30
     static float vals[NUMVALS];
     
-    time = [[NSDate date] timeIntervalSince1970];
     //Gyroscope
     if([self.motionManager isGyroAvailable])
     {
@@ -69,17 +64,7 @@
             
             /* Receive the gyroscope data on this block */
             [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
-                
-                double now = [[NSDate date] timeIntervalSince1970];
-                double timedelta = now - time;
-                time = now;
-
-                
                 CMAcceleration acc = [motion gravity];
-                if (abs(acc.z) > 0.07) {
-                    speed += acc.z;
-                    position += speed * timedelta;
-                }
                 vals[i%NUMVALS] = acc.y - last;
                 last = acc.y;
                 
@@ -115,7 +100,6 @@
                     olddir = newdir;
                 }
                 
-                speed *= .99;
                 if (i%5 == 0) {
                     NSLog(@"%.02f, %.04f, %.04f, ", acc.y, avg, newdir);
                 }
