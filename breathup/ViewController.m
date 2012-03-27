@@ -100,12 +100,12 @@
                 }
                 lastavg = avg;
                 if (newdir == 1) {
-                    [self.view setBackgroundColor:[UIColor redColor]];
+                    [self.view setBackgroundColor:[UIColor blueColor]];
                     if (olddir == -1) {
                         AudioServicesPlaySystemSound(sounda);
                     }
                 } else if(newdir == -1){
-                    [self.view setBackgroundColor:[UIColor greenColor]];
+                    [self.view setBackgroundColor:[UIColor lightGrayColor]];
                     if (olddir == 1) {
                         AudioServicesPlaySystemSound(soundb);
                     }
