@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad
 {
+    // Create sounds:
     SystemSoundID soundID = 0;
         NSString *filename = @"receiveold.caf";
 		CFURLRef soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
@@ -40,9 +41,13 @@
     AudioServicesCreateSystemSoundID (soundURL, &soundID);
 
     SystemSoundID soundb = soundID;
+    
+    // Do regular view contorller thing:
     [super viewDidLoad];
     
     
+    
+    // Start listening to motion updates
     self.motionManager = [[CMMotionManager alloc] init];
     static float last = 0;
     static float lastavg = 0;
@@ -64,18 +69,29 @@
             
             /* Receive the gyroscope data on this block */
             [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
+                // this "block gets run everytime there is a new 
+                // gyro motion update
                 CMAcceleration acc = [motion gravity];
-                vals[i%NUMVALS] = acc.y - last;
+                // we are keeping a circular buffer of the CHANGES in y gravity
+                
+                vals[i%NUMVALS] = acc.y - last; //this is the change since last time
                 last = acc.y;
                 
+                // now we average the change over our last little sliding window
+                // to get a feeling for the overall gist of the changes
+                // this is essentially smoothing low pass filter
                 double avg = 0;
                 for (int j = 0; j < NUMVALS; j++) {
                     avg += vals[j];
                 }
                 avg /= NUMVALS;
+                
+                
+                // if the average is close to 0, don't count it as movement.
                 if (avg > -0.0001 && avg <0) {
                     avg = 0;
                 }
+                
                 float newdir = 0;
                 if (avg <0 && lastavg < 0) {
                     newdir = -1;
@@ -83,8 +99,14 @@
                 if ( avg > 0 && lastavg > 0) {
                     newdir = 1;
                 }
+                
                 lastavg = avg;
+                // olddir is the last direction we were going
+                // new dir is the direction we are going now
+                // if they are different, we will play a new sound, 
+                // depending on the direction of the change
                 if (newdir == 1) {
+                    // set the background color every time
                     [self.view setBackgroundColor:[UIColor blueColor]];
                     if (olddir == -1) {
                         AudioServicesPlaySystemSound(sounda);
