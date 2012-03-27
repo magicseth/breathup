@@ -23,7 +23,7 @@
 {
     // Create sounds:
     SystemSoundID soundID = 0;
-        NSString *filename = @"receiveold.caf";
+        NSString *filename = @"exhale.caf";
 		CFURLRef soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
 													(CFStringRef) filename,
 													CFSTR(""),
@@ -32,7 +32,7 @@
     AudioServicesCreateSystemSoundID (soundURL, &soundID);
 
     SystemSoundID sounda = soundID;
-    filename = @"sendold.caf";
+    filename = @"inhale.caf";
     soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(),
                                                 (CFStringRef) filename,
                                                 CFSTR(""),

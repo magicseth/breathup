@@ -19,8 +19,9 @@
 		648974661502ED3500535080 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974651502ED3500535080 /* CoreMotion.framework */; };
 		648974681502F66D00535080 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974671502F66D00535080 /* Security.framework */; };
 		6489746A1502FD8E00535080 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974691502FD8E00535080 /* AudioToolbox.framework */; };
-		6489746D1502FDC300535080 /* receiveold.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6489746B1502FDC300535080 /* receiveold.caf */; };
-		6489746E1502FDC300535080 /* sendold.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6489746C1502FDC300535080 /* sendold.caf */; };
+		996F2C06152183E500490076 /* exhale.caf in Resources */ = {isa = PBXBuildFile; fileRef = 996F2C03152183E500490076 /* exhale.caf */; };
+		996F2C07152183E500490076 /* inhale.caf in Resources */ = {isa = PBXBuildFile; fileRef = 996F2C04152183E500490076 /* inhale.caf */; };
+		996F2C08152183E500490076 /* lullaby.caf in Resources */ = {isa = PBXBuildFile; fileRef = 996F2C05152183E500490076 /* lullaby.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +42,9 @@
 		648974651502ED3500535080 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		648974671502F66D00535080 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		648974691502FD8E00535080 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		6489746B1502FDC300535080 /* receiveold.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = receiveold.caf; sourceTree = "<group>"; };
-		6489746C1502FDC300535080 /* sendold.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sendold.caf; sourceTree = "<group>"; };
+		996F2C03152183E500490076 /* exhale.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = exhale.caf; path = audio/exhale.caf; sourceTree = "<group>"; };
+		996F2C04152183E500490076 /* inhale.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = inhale.caf; path = audio/inhale.caf; sourceTree = "<group>"; };
+		996F2C05152183E500490076 /* lullaby.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = lullaby.caf; path = audio/lullaby.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,9 @@
 		648974361502EC3E00535080 = {
 			isa = PBXGroup;
 			children = (
-				6489746B1502FDC300535080 /* receiveold.caf */,
-				6489746C1502FDC300535080 /* sendold.caf */,
+				996F2C03152183E500490076 /* exhale.caf */,
+				996F2C04152183E500490076 /* inhale.caf */,
+				996F2C05152183E500490076 /* lullaby.caf */,
 				648974691502FD8E00535080 /* AudioToolbox.framework */,
 				648974671502F66D00535080 /* Security.framework */,
 				648974651502ED3500535080 /* CoreMotion.framework */,
@@ -173,8 +176,9 @@
 				648974501502EC3E00535080 /* InfoPlist.strings in Resources */,
 				6489745C1502EC3E00535080 /* ViewController_iPhone.xib in Resources */,
 				6489745F1502EC3E00535080 /* ViewController_iPad.xib in Resources */,
-				6489746D1502FDC300535080 /* receiveold.caf in Resources */,
-				6489746E1502FDC300535080 /* sendold.caf in Resources */,
+				996F2C06152183E500490076 /* exhale.caf in Resources */,
+				996F2C07152183E500490076 /* inhale.caf in Resources */,
+				996F2C08152183E500490076 /* lullaby.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
