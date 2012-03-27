@@ -45,6 +45,7 @@
     NSError * err = nil;
     lullaby = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"lullaby" withExtension:@"caf"] error:&err];
     [lullaby setNumberOfLoops:-1];
+    [lullaby setEnableRate:YES];
     [lullaby play];
     
     // Do regular view contorller thing:
@@ -103,7 +104,9 @@
                 } else if ( avg > 0) {
                     newdir = 1;
                 }
-                
+#define BREATH_LOWPASS_COUNT 5
+                static double breathRates[BREATH_LOWPASS_COUNT];
+                static int breathcount = 0;
                 // olddir is the last direction we were going
                 // new dir is the direction we are going now
                 // if they are different, we will play a new sound, 
@@ -112,13 +115,17 @@
                     // set the background color every time
                     [self.view setBackgroundColor:[UIColor blueColor]];
                     if (olddir == -1 ) {
-                        AudioServicesPlaySystemSound(sounda);
+//                        AudioServicesPlaySystemSound(sounda);
+                        breathRates[breathcount %BREATH_LOWPASS_COUNT] = now - lastChange;
+                        breathcount++;
                         lastChange = now;
                     }
                 } else if(newdir == -1){
                     [self.view setBackgroundColor:[UIColor lightGrayColor]];
                     if (olddir == 1) {
-                        AudioServicesPlaySystemSound(soundb);
+//                        AudioServicesPlaySystemSound(soundb);
+                        breathRates[breathcount %BREATH_LOWPASS_COUNT] = now - lastChange;
+                        breathcount++;
                         lastChange = now;
                     }   
                 }
@@ -126,8 +133,30 @@
                     olddir = newdir;
                 }
                 
+                
+                double avgbreathlength = 0.0;
+                if (lastChange == now) {
+                    float c = MIN(BREATH_LOWPASS_COUNT, breathcount);
+                    for (int j = 0; j < c; j++) {
+                        avgbreathlength += breathRates[j];
+                    }
+                    avgbreathlength = avgbreathlength / (float) c;
+                    
+#define TARGETBREATHRATE 16
+                    float targetbreathlength = 60.0 / TARGETBREATHRATE /2.0;
+                    double ratechange  = 2 - (avgbreathlength - (targetbreathlength-1));
+                    if (ratechange < .5) {
+                        ratechange = .5;
+                    } else if (ratechange > 2.0) {
+                        ratechange = 2.0;
+                    }
+                    [lullaby setRate:ratechange];
+                    NSLog(@"%.02f breath equals rate %.02f", avgbreathlength, ratechange);
+
+                }
+                
                 if (i%5 == 0) {
-                    NSLog(@"%.02f, %.04f, %.04f, ", acc.y, avg, newdir);
+//                    NSLog(@"%.02f, %.04f, %.04f", acc.y, avg, newdir);
                 }
                 i++;
             }];
