@@ -1,10 +1,3 @@
 
-breathup.xcodeproj/project.xcworkspace/contents.xcworkspacedata
-
-breathup.xcodeproj/project.xcworkspace/xcuserdata/raphael.xcuserdatad/UserInterfaceState.xcuserstate
-
-breathup.xcodeproj/xcuserdata/raphael.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
-
-breathup.xcodeproj/xcuserdata/raphael.xcuserdatad/xcschemes/breathup.xcscheme
-
-breathup.xcodeproj/xcuserdata/raphael.xcuserdatad/xcschemes/xcschememanagement.plist
+breathup.xcodeproj/*
+build/*
