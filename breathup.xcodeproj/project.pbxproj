@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		647BD6801521879B003969B5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647BD67F1521879B003969B5 /* AVFoundation.framework */; };
 		648974461502EC3E00535080 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974451502EC3E00535080 /* UIKit.framework */; };
 		648974481502EC3E00535080 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974471502EC3E00535080 /* Foundation.framework */; };
 		6489744A1502EC3E00535080 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648974491502EC3E00535080 /* CoreGraphics.framework */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		647BD67F1521879B003969B5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		648974411502EC3E00535080 /* breathup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = breathup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648974451502EC3E00535080 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		648974471502EC3E00535080 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -58,6 +60,7 @@
 				6489744A1502EC3E00535080 /* CoreGraphics.framework in Frameworks */,
 				648974681502F66D00535080 /* Security.framework in Frameworks */,
 				6489746A1502FD8E00535080 /* AudioToolbox.framework in Frameworks */,
+				647BD6801521879B003969B5 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +93,7 @@
 		648974441502EC3E00535080 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				647BD67F1521879B003969B5 /* AVFoundation.framework */,
 				648974451502EC3E00535080 /* UIKit.framework */,
 				648974471502EC3E00535080 /* Foundation.framework */,
 				648974491502EC3E00535080 /* CoreGraphics.framework */,

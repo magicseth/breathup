@@ -42,6 +42,11 @@
 
     SystemSoundID soundb = soundID;
     
+    NSError * err = nil;
+    lullaby = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"lullaby" withExtension:@"caf"] error:&err];
+    [lullaby setNumberOfLoops:-1];
+    [lullaby play];
+    
     // Do regular view contorller thing:
     [super viewDidLoad];
     

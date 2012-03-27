@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
+#import <AVFoundation/AVAudioPlayer.h>
 
 @interface ViewController : UIViewController
-
+{
+    AVAudioPlayer * lullaby;
+}
 @property (nonatomic, retain) CMMotionManager *motionManager ;
 @end
