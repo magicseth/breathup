@@ -51,7 +51,7 @@
     static float lastdir = 1;
     static double time = 0.0;
     static double olddir;
-#define NUMVALS 5
+#define NUMVALS 30
     static float vals[NUMVALS];
     
     time = [[NSDate date] timeIntervalSince1970];
