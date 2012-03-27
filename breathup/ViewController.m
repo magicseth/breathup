@@ -58,6 +58,7 @@
     static double olddir;
 #define NUMVALS 30
     static float vals[NUMVALS];
+    static double lastChange = 0.0;
     
     //Gyroscope
     if([self.motionManager isGyroAvailable])
@@ -73,6 +74,8 @@
             
             /* Receive the gyroscope data on this block */
             [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
+                
+                double now = [[NSDate date] timeIntervalSince1970];
                 // this "block gets run everytime there is a new 
                 // gyro motion update
                 CMAcceleration acc = [motion gravity];
@@ -108,15 +111,16 @@
                 if (newdir == 1) {
                     // set the background color every time
                     [self.view setBackgroundColor:[UIColor blueColor]];
-                    if (olddir == -1) {
+                    if (olddir == -1 ) {
                         AudioServicesPlaySystemSound(sounda);
+                        lastChange = now;
                     }
                 } else if(newdir == -1){
                     [self.view setBackgroundColor:[UIColor lightGrayColor]];
                     if (olddir == 1) {
                         AudioServicesPlaySystemSound(soundb);
-                    }
-                    
+                        lastChange = now;
+                    }   
                 }
                 if (newdir) {
                     olddir = newdir;
