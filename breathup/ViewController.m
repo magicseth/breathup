@@ -50,7 +50,6 @@
     // Start listening to motion updates
     self.motionManager = [[CMMotionManager alloc] init];
     static float last = 0;
-    static float lastavg = 0;
     static double olddir;
 #define NUMVALS 30
     static float vals[NUMVALS];
@@ -86,21 +85,17 @@
                 }
                 avg /= NUMVALS;
                 
+                float newdir = 0;
                 
                 // if the average is close to 0, don't count it as movement.
-                if (avg > -0.0001 && avg <0) {
-                    avg = 0;
-                }
-                
-                float newdir = 0;
-                if (avg <0 && lastavg < 0) {
+                if (avg > -0.0001 && avg <0.0001) {
+                    newdir = 0;
+                } else if (avg <0 ) {
                     newdir = -1;
-                }
-                if ( avg > 0 && lastavg > 0) {
+                } else if ( avg > 0) {
                     newdir = 1;
                 }
                 
-                lastavg = avg;
                 // olddir is the last direction we were going
                 // new dir is the direction we are going now
                 // if they are different, we will play a new sound, 
