@@ -1,3 +1,14 @@
 
 breathup.xcodeproj/*
 build/*
+audio_ignore/lullaby.wav
+
+audio_ignore/receiveold.caf
+
+audio_ignore/inhale_snore.wav
+
+audio_ignore/exhale_snore.wav
+
+audio/.DS_Store
+
+.DS_Store
