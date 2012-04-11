@@ -10,7 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 @implementation ViewController
 @synthesize motionManager;
-
+@synthesize changeLullabyTemp;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -115,7 +115,10 @@
                     // set the background color every time
                     [self.view setBackgroundColor:[UIColor blueColor]];
                     if (olddir == -1 ) {
-//                        AudioServicesPlaySystemSound(sounda);
+                        if (!changeLullabyTemp) {
+                            AudioServicesPlaySystemSound(sounda);
+                        }
+
                         breathRates[breathcount %BREATH_LOWPASS_COUNT] = now - lastChange;
                         breathcount++;
                         lastChange = now;
@@ -123,7 +126,9 @@
                 } else if(newdir == -1){
                     [self.view setBackgroundColor:[UIColor lightGrayColor]];
                     if (olddir == 1) {
-//                        AudioServicesPlaySystemSound(soundb);
+                        if (!changeLullabyTemp) {
+                            AudioServicesPlaySystemSound(soundb);
+                        }
                         breathRates[breathcount %BREATH_LOWPASS_COUNT] = now - lastChange;
                         breathcount++;
                         lastChange = now;
@@ -150,6 +155,9 @@
                     } else if (ratechange > 2.0) {
                         ratechange = 2.0;
                     }
+                    if (!changeLullabyTemp) {
+                        ratechange = 1.0;
+                    }
                     [lullaby setRate:ratechange];
                     NSLog(@"%.02f breath equals rate %.02f", avgbreathlength, ratechange);
 
@@ -171,6 +179,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+    changeLullabyTemp = ! changeLullabyTemp;
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];

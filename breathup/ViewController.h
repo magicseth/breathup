@@ -15,4 +15,5 @@
     AVAudioPlayer * lullaby;
 }
 @property (nonatomic, retain) CMMotionManager *motionManager ;
+@property (nonatomic, assign) BOOL changeLullabyTemp;
 @end
